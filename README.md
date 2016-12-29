@@ -3,7 +3,7 @@
 
 This code is written in MATLAB and requires the KNITRO solver. As is, the model replicates results found in the paper but parameters can be changed to explore other settings. Initial guesses for the solver are set near the solution to reduce run time.
 
-### Instructions:
+### Instructions
 The main file is `MAIN_SCRIPT.m`. At the top of the file, the user must indicate the location of the KNITRO options file using `options_file`. Next, the user selects the type of model to run using the `logic` structure. Setting `logic.stat_ems = 0` will run the model with non-stationary emissions following the DICE-2007 model. Setting `logic.ghkt = 1` will alter the carbon decay structure to match that of Golosov, Hassler, Krusell, and Tsyvinski (2014). `logic.hotelling` determines whether, for a given model, you will perform a run accounting for inertia in warming `logic.hotelling = 0` or not `logic.hotelling = 1`. When running the base model, setting `logic.vary_params = 1` will also solve the model for an inertia parameter that is 25% higher and lower, and then for a discount rate of 1.4% from Stern (2007). Note two things:
 
 1. To perform a non-stationary emissions run, you must use the base decay structure, and to use the GHKT decay structure, you must have stationary emissions. If you attempt to run both, the code will default to a GHKT model with stationary emissions.
@@ -26,3 +26,6 @@ For the GHKT model we now have two CO2 stocks, but still one constraint on the s
 The GHKT inertia model again follows the same logic. Where now, the temperature target pins down terminal temperature and now we must also search over the terminal temperature costate. We add another objective of equating the initial temperature parameter to the simulated temperature at the time of the simulation where the simulated permanent CO2 stock is within a given tolerance of the given initial permanent CO2 stock. 
 
 #### Non-stationary emissions model (appendix)
+For the non-stationary emissions setting, we must search over the time at which we hit the target. As with the base Hotelling model, the target pins down the terminal CO2 stock. However, unlike the base model, this alone does not pin down abatement since we must know the level of emissions at the terminal time to know the level of terminal abatement and in turn the terminal CO2 costate. Therefore, we search over the terminal time with the objective equating the initial CO2 parameter to the simulated CO2 level at the initial time of the simulation implied by the guessed terminal time.
+
+The inertia model again follows the same logic. Where now, the temperature target pins down terminal temperature and now we must also search over the terminal temperature costate. We add another objective of equating the initial temperature parameter to the simulated temperature at the initial time of the simulation implied by the guessed terminal time.
