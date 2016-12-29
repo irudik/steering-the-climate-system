@@ -1,5 +1,6 @@
-# "Steering the Climate System: Using Inertia to Lower the Cost of Policy"
-## By: Derek Lemoine and Ivan Rudik
+## "Steering the Climate System: Using Inertia to Lower the Cost of Policy"
+## README and replication code
+### By: Derek Lemoine and Ivan Rudik
 
 This code is written in MATLAB and requires the KNITRO solver. As is, the model replicates results found in the paper but parameters can be changed to explore other settings. Initial guesses for the solver are set near the solution to reduce run time.
 
