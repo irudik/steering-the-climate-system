@@ -1,4 +1,4 @@
-## "Steering the Climate System: Using Inertia to Lower the Cost of Policy"
+## Steering the Climate System: Using Inertia to Lower the Cost of Policy
 ## README and replication code
 ### By: Derek Lemoine and Ivan Rudik
 
